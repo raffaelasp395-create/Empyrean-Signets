@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sellos de Empíreo · Guía de personajes</title>
+<meta name="description" content="Guía de los sellos, dragones y estado de los marcados y personajes principales de la saga Empíreo de Rebecca Yarros, hasta Alas de ónix.">
+<meta property="og:title" content="Sellos de Empíreo · Guía de personajes">
+<meta property="og:description" content="Sellos, dragones y estado de los marcados y personajes principales de Empíreo.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0d10; --card:#17151b; --line:#2a2630; --text:#ece8f0; --muted:#9a93a6;
+    --gold:#d4a84a; --gold-soft:rgba(212,168,74,.14);
+    --red:#c2453c; --red-soft:rgba(194,69,60,.15);
+    --blue:#7fa6d9; --blue-soft:rgba(127,166,217,.14);
+    --amber:#e3a03a; --amber-soft:rgba(227,160,58,.15);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.45}
+
+  /* Top bar */
+  .topbar{position:sticky;top:0;z-index:10;background:rgba(14,13,16,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar .in{max-width:960px;margin:0 auto;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .brand{font-family:Cinzel,serif;font-weight:700;letter-spacing:.05em;color:var(--text);text-decoration:none}
+  .brand span{color:var(--gold)}
+  .lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .lang button{background:transparent;border:none;color:var(--muted);font:600 .8rem Inter,sans-serif;padding:6px 12px;cursor:pointer}
+  .lang button[aria-pressed="true"]{background:var(--gold);color:#17130a}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(600px 300px at 80% 0%,rgba(212,168,74,.18),transparent 70%),
+    radial-gradient(500px 280px at 0% 100%,rgba(194,69,60,.14),transparent 70%)}
+  .hero .in{position:relative;max-width:960px;margin:0 auto;padding:64px 16px 56px}
+  .eyebrow{color:var(--gold);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}
+  .hero h1{font-family:Cinzel,serif;font-size:clamp(2rem,7vw,3.4rem);line-height:1.08;margin:0 0 14px;letter-spacing:.02em}
+  .hero h1 span{color:var(--gold)}
+  .hero p.lead{color:var(--muted);font-size:clamp(1rem,2.4vw,1.15rem);max-width:600px;margin:0 0 26px}
+  .cta{display:inline-block;background:var(--gold);color:#17130a;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:10px}
+  .cta:hover{filter:brightness(1.08)}
+
+  .wrap{max-width:960px;margin:0 auto;padding:32px 16px 48px}
+  .finder{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+  .finder select,.finder input{flex:1 1 200px;min-width:170px;background:var(--card);border:1px solid var(--line);color:var(--text);padding:10px 12px;border-radius:10px;font:400 .92rem Inter,sans-serif}
+  .finder select{cursor:pointer}
+  .finder select:focus,.finder input:focus{outline:2px solid var(--gold);outline-offset:1px}
+  .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+  .chip{border:1px solid var(--line);background:transparent;color:var(--text);padding:7px 13px;border-radius:999px;font:500 .85rem Inter,sans-serif;cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#17130a}
+  .clear{background:none;border:none;color:var(--gold);font:500 .85rem Inter,sans-serif;cursor:pointer;padding:6px 4px;display:none}
+  .toggle{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);cursor:pointer;user-select:none;margin:4px 0 18px}
+  .toggle input{accent-color:var(--gold);width:16px;height:16px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+  .stat b{display:block;font-size:1.4rem;font-family:Cinzel,serif}
+  .stat small{color:var(--muted);font-size:.75rem}
+  .section{font-family:Cinzel,serif;color:var(--gold);font-size:1rem;letter-spacing:.06em;margin:22px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+  .grid.single{grid-template-columns:minmax(0,520px)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px}
+  .card.marked{border-left:3px solid var(--red)}
+  .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;margin-bottom:10px}
+  .name{font-weight:600;font-size:1.02rem;margin:0}
+  .tag{font-size:.68rem;font-weight:600;padding:3px 7px;border-radius:6px;white-space:nowrap;background:var(--red-soft);color:#ef8a82}
+  .meta{display:flex;flex-wrap:wrap;gap:6px;margin:-2px 0 8px}
+  .dr{font-size:.75rem;color:var(--muted);background:#1f1c24;border:1px solid var(--line);padding:3px 8px;border-radius:999px}
+  .st{font-size:.72rem;font-weight:600;padding:3px 8px;border-radius:999px}
+  .st-alive{background:rgba(110,180,120,.14);color:#8fcf98}
+  .st-dead{background:#26232b;color:var(--muted)}
+  .st-venin{background:rgba(160,90,200,.16);color:#c79ae6}
+  .st-unk{background:var(--amber-soft);color:var(--amber)}
+  .st-hurt{background:var(--blue-soft);color:var(--blue)}
+  .seal{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-top:1px dashed var(--line)}
+  .seal:first-of-type{border-top:none}
+  .num{flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:600;background:var(--gold-soft);color:var(--gold)}
+  .seal .val{font-size:.92rem}
+  .seal .val em{display:block;font-style:normal;color:var(--muted);font-size:.76rem;margin-top:1px}
+  .pending .num{background:var(--amber-soft);color:var(--amber)}
+  .pending .val{color:var(--amber);font-weight:600}
+  .hinted .num{background:var(--blue-soft);color:var(--blue)}
+  .bk{display:inline-block;font-size:.64rem;font-weight:600;color:var(--gold);border:1px solid rgba(212,168,74,.35);border-radius:5px;padding:0 5px;margin-left:4px;vertical-align:1px}
+  .spoiler{filter:blur(6px);cursor:pointer;transition:filter .2s}
+  .spoiler.shown{filter:none}
+  .note{color:var(--muted);font-size:.78rem;margin-top:8px}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.78rem;color:var(--muted);margin-top:26px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+  .legend b{color:var(--gold)}
+  footer{border-top:1px solid var(--line)}
+  footer .in{max-width:960px;margin:0 auto;padding:18px 16px 32px;color:var(--muted);font-size:.78rem}
+  .empty{color:var(--muted);font-size:.9rem;padding:12px 0}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="in">
+    <a class="brand" href="#top" data-i18n="brand">Sellos de <span>Empíreo</span></a>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="in">
+    <p class="eyebrow" data-i18n="eyebrow">Saga Empíreo · Rebecca Yarros</p>
+    <h1 data-i18n="heroTitle">Todos los sellos, <span>en un solo lugar</span></h1>
+    <p class="lead" data-i18n="heroLead">Sellos, dragones y estado de los marcados y los personajes principales, hasta Alas de ónix. Con modo sin spoilers.</p>
+    <a class="cta" href="#guide" data-i18n="cta">Ver la guía</a>
+  </div>
+</section>
+
+<main class="wrap" id="guide">
+  <div class="finder">
+    <select id="pick" aria-label=""></select>
+    <input id="q" type="search" aria-label="">
+  </div>
+  <div class="bar" role="group">
+    <button class="chip" data-f="all" aria-pressed="true" data-i18n="fAll">Todos</button>
+    <button class="chip" data-f="marked" aria-pressed="false" data-i18n="fMarked">Marcados</button>
+    <button class="chip" data-f="pending" aria-pressed="false" data-i18n="fPending">Pendientes</button>
+    <button class="chip" data-f="two" aria-pressed="false" data-i18n="fTwo">Dos sellos</button>
+    <button class="clear" id="clear" data-i18n="clear">Limpiar</button>
+  </div>
+  <label class="toggle"><input type="checkbox" id="spoil"> <span data-i18n="spoil">Ocultar spoilers (segundos sellos y finales de Alas de ónix) · toca para revelar</span></label>
+
+  <div class="stats" id="stats"></div>
+  <div id="out"></div>
+
+  <div class="legend">
+    <span><i style="background:var(--gold)"></i><span data-i18n="lgConfirmed">Confirmado</span></span>
+    <span><i style="background:var(--blue)"></i><span data-i18n="lgHinted">Insinuado, no confirmado</span></span>
+    <span><i style="background:var(--amber)"></i><span data-i18n="lgPending">Pendiente del segundo</span></span>
+    <span><i style="background:var(--red)"></i><span data-i18n="lgMarked">Marcado (reliquia de la rebelión)</span></span>
+  </div>
+  <div class="legend" id="booksLegend" style="margin-top:8px"></div>
+</main>
+
+<footer>
+  <div class="in" data-i18n="foot">
+    <b>Ojo:</b> Alas de ónix confirma que varios marcados tienen un segundo sello, pero no que lo tengan todos. “Pendiente” significa que aún no se conoce, no que esté garantizado. El estado es el del final de Alas de ónix; “incierto” marca finales abiertos. No incluye Threshing Day (sept. 2026). Guía no oficial hecha por fans.
+  </div>
+</footer>
+
+<script>
+/* ---------- Interface text ---------- */
+const UI = {
+  es: {
+    title: "Sellos de Empíreo · Guía de personajes",
+    desc: "Guía de los sellos, dragones y estado de los marcados y personajes principales de la saga Empíreo de Rebecca Yarros, hasta Alas de ónix.",
+    brand: 'Sellos de <span>Empíreo</span>',
+    eyebrow: "Saga Empíreo · Rebecca Yarros",
+    heroTitle: 'Todos los sellos, <span>en un solo lugar</span>',
+    heroLead: "Sellos, dragones y estado de los marcados y los personajes principales, hasta <i>Alas de ónix</i>. Con modo sin spoilers.",
+    cta: "Ver la guía",
+    pickAll: "Todos los personajes", pickLabel: "Elegir personaje",
+    search: "Buscar por nombre, sello o dragón…",
+    fAll: "Todos", fMarked: "Marcados", fPending: "Pendientes", fTwo: "Dos sellos", clear: "Limpiar",
+    spoil: "Ocultar spoilers (segundos sellos y finales de <i>Alas de ónix</i>) · toca para revelar",
+    stMarked: "Marcados", stTwo: "Con dos sellos", stPending: "Pendientes del segundo",
+    secMarked: "Marcados", secMain: "Personajes principales",
+    tagMarked: "Marcado", pending: "Pendiente del segundo", pendingSub: "Aún no revelado",
+    empty: "Ningún personaje coincide.",
+    lgConfirmed: "Confirmado", lgHinted: "Insinuado, no confirmado", lgPending: "Pendiente del segundo", lgMarked: "Marcado (reliquia de la rebelión)",
+    books: {FW:["AdS","Alas de sangre"], IF:["AdH","Alas de hierro"], OS:["AdO","Alas de ónix"]},
+    noTag: "Sin etiqueta = libro no verificado",
+    foot: "<b>Ojo:</b> <i>Alas de ónix</i> confirma que varios marcados tienen un segundo sello, pero no que lo tengan <u>todos</u>. “Pendiente” significa que aún no se conoce, no que esté garantizado. El estado es el del final de <i>Alas de ónix</i>; “incierto” marca finales abiertos. No incluye <i>Threshing Day</i> (sept. 2026). Guía no oficial hecha por fans."
+  },
+  en: {
+    title: "Empyrean Signets · Character Guide",
+    desc: "A guide to the signets, dragons and status of the marked ones and main characters in Rebecca Yarros' Empyrean series, up to Onyx Storm.",
+    brand: 'Empyrean <span>Signets</span>',
+    eyebrow: "The Empyrean · Rebecca Yarros",
+    heroTitle: 'Every signet, <span>in one place</span>',
+    heroLead: "Signets, dragons and status of the marked ones and main characters, up to <i>Onyx Storm</i>. With a spoiler-free mode.",
+    cta: "Open the guide",
+    pickAll: "All characters", pickLabel: "Choose a character",
+    search: "Search by name, signet or dragon…",
+    fAll: "All", fMarked: "Marked", fPending: "Pending", fTwo: "Two signets", clear: "Clear",
+    spoil: "Hide spoilers (second signets and <i>Onyx Storm</i> outcomes) · tap to reveal",
+    stMarked: "Marked ones", stTwo: "With two signets", stPending: "Second signet pending",
+    secMarked: "Marked ones", secMain: "Main characters",
+    tagMarked: "Marked", pending: "Second signet pending", pendingSub: "Not revealed yet",
+    empty: "No characters match.",
+    lgConfirmed: "Confirmed", lgHinted: "Implied, not confirmed", lgPending: "Second signet pending", lgMarked: "Marked (rebellion relic)",
+    books: {FW:["FW","Fourth Wing"], IF:["IF","Iron Flame"], OS:["OS","Onyx Storm"]},
+    noTag: "No tag = book not verified",
+    foot: "<b>Note:</b> <i>Onyx Storm</i> confirms that several marked ones have a second signet, not that <u>all</u> of them do. “Pending” means not yet revealed, not guaranteed. Status reflects the end of <i>Onyx Storm</i>; “uncertain” marks open endings. Does not include <i>Threshing Day</i> (Sept 2026). Unofficial fan-made guide."
+  }
+};
+
+/* ---------- Character data (book keys: FW / IF / OS) ---------- */
+const D = [
+  {n:"Xaden Riorson", m:true, dr:{es:"Sgaeyl (azul)", en:"Sgaeyl (blue)"},
+   st:{k:"venin", b:"OS", sp:true, es:"Venin · se marcha al final", en:"Venin · leaves at the end"},
+   s:[{b:"FW", es:"Manejo de sombras", en:"Shadow wielding"},
+      {b:"IF", sp:true, es:"Lectura de intenciones", en:"Reading intentions",
+       d:{es:"Inntinnsic: el único sello por el que ejecutan a los jinetes", en:"Inntinnsic: the only signet riders are executed for"}}]},
+  {n:"Liam Mairi", m:true, dr:{es:"Deigh (rojo)", en:"Deigh (red)"},
+   st:{k:"dead", b:"FW", es:"Fallecido", en:"Dead"},
+   s:[{b:"FW", es:"Visión lejana", en:"Farsight"},
+      {b:"FW · OS", sp:true, es:"Manejo del hielo", en:"Ice wielding",
+       d:{es:"Lo usa en Resson; se confirma como segundo sello en Alas de ónix", en:"Used at Resson; confirmed as a second signet in Onyx Storm"}}]},
+  {n:"Garrick Tavis", m:true, dr:{es:"Chradh (marrón)", en:"Chradh (brown)"},
+   st:{k:"unk", b:"OS", sp:true, es:"Desaparecido al final (incierto)", en:"Missing at the end (uncertain)"},
+   s:[{es:"Manejo del aire", en:"Air wielding"},
+      {b:"OS", sp:true, es:"Manejo de la distancia", en:"Distance wielding",
+       d:{es:"Recorre grandes distancias en minutos; nadie lo tenía en siglos", en:"Crosses huge distances in minutes; none in centuries"}}]},
+  {n:"Imogen Cardulo", m:true, dr:{es:"Glane (naranja)", en:"Glane (orange)"},
+   st:{k:"alive", es:"Viva", en:"Alive"},
+   s:[{es:"Borrado de recuerdos", en:"Memory wiping"},
+      {b:"OS", sp:true, h:true, es:"Manejo de la piedra", en:"Stone wielding",
+       d:{es:"Se insinúa, no se confirma explícitamente", en:"Implied, not explicitly confirmed"}}]},
+  {n:"Bodhi Durran", m:true, dr:{es:"Cuir (verde)", en:"Cuir (green)"},
+   st:{k:"unk", b:"OS", sp:true, es:"Incierto al final", en:"Uncertain at the end"},
+   s:[{es:"Contrarrestar sellos", en:"Countering signets"}, {p:true}]},
+  {n:"Sloane Mairi", m:true, dr:{es:"Thoirt (rojo)", en:"Thoirt (red)"},
+   st:{k:"alive", es:"Viva", en:"Alive"},
+   s:[{b:"IF", es:"Sifón", en:"Siphon",
+       d:{es:"Absorbe y canaliza poder; el imbuir le sale natural", en:"Absorbs and channels power; imbuing comes naturally"}}, {p:true}]},
+
+  {n:"Violet Sorrengail", m:false, dr:{es:"Tairn (negro) y Andarna (irid)", en:"Tairn (black) & Andarna (irid)"},
+   st:{k:"alive", es:"Viva", en:"Alive"},
+   note:{es:"Única con dos sellos sin reliquia: el segundo viene de Andarna.", en:"Only rider with two signets and no relic: the second comes from Andarna."},
+   s:[{b:"FW", es:"Manejo del rayo", en:"Lightning wielding", d:{es:"Vía Tairn", en:"Through Tairn"}},
+      {b:"OS", sp:true, es:"Caminar en sueños", en:"Dream walking",
+       d:{es:"Se insinúa en Alas de hierro; se confirma en Alas de ónix", en:"Hinted in Iron Flame; confirmed in Onyx Storm"}}]},
+  {n:"Rhiannon Matthias", m:false, dr:{es:"Feirge (verde)", en:"Feirge (green)"},
+   st:{k:"alive", es:"Viva", en:"Alive"},
+   s:[{b:"FW", es:"Invocar y recuperar objetos", en:"Summoning & retrieving objects"}]},
+  {n:"Ridoc Gamlyn", m:false, dr:{es:"Aotrom (marrón)", en:"Aotrom (brown)"},
+   st:{k:"alive", es:"Vivo", en:"Alive"},
+   s:[{b:"FW", es:"Manejo del hielo", en:"Ice wielding"}]},
+  {n:"Sawyer Henrick", m:false, dr:{es:"Sliseag (rojo)", en:"Sliseag (red)"},
+   st:{k:"hurt", b:"IF", es:"Vivo · pierde la pierna", en:"Alive · loses his leg"},
+   s:[{es:"Metalurgia", en:"Metallurgy"}]},
+  {n:"Dain Aetos", m:false, dr:{es:"Cath (rojo)", en:"Cath (red)"},
+   st:{k:"alive", es:"Vivo", en:"Alive"},
+   s:[{b:"FW", es:"Lectura de recuerdos", en:"Memory reading", d:{es:"Con el tacto", en:"Through touch"}}]},
+  {n:"Mira Sorrengail", m:false, dr:{es:"Teine (verde)", en:"Teine (green)"},
+   st:{k:"unk", b:"OS", sp:true, es:"Herida grave al final (incierto)", en:"Gravely wounded at the end (uncertain)"},
+   s:[{es:"Extender guardas", en:"Extending wards"}]},
+  {n:"Brennan Sorrengail", m:false, dr:{es:"Marbh (naranja)", en:"Marbh (orange)"},
+   st:{k:"alive", es:"Vivo", en:"Alive"},
+   s:[{b:"IF", es:"Sanación", en:"Mending", d:{es:"El sello más raro y valioso", en:"The rarest, most precious signet"}}]},
+  {n:"Aaric Graycastle", m:false, dr:{es:"Molvic (azul)", en:"Molvic (blue)"},
+   st:{k:"alive", es:"Vivo", en:"Alive"},
+   s:[{b:"OS", sp:true, es:"Precognición", en:"Precognition",
+       d:{es:"Precog completo: ve el futuro, no solo batallas como Melgren. Se creía que no existía; no está prohibido", en:"A true precog: sees the future, not just battles like Melgren. Thought not to exist; not forbidden"}}]},
+  {n:"Quinn Hollis", m:false, dr:{es:"Cruth", en:"Cruth"},
+   st:{k:"dead", b:"OS", sp:true, es:"Fallecida", en:"Dead"},
+   note:{es:"Su sello es especialmente fuerte porque Cruth fue el dragón de su tía abuela.", en:"Her signet is unusually strong because Cruth was her great-aunt's dragon."},
+   s:[{es:"Proyección astral", en:"Astral projection"}]}
+];
+
+/* ---------- State ---------- */
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+};
+let lang = store.get("empyrean-lang") || ((navigator.language||"es").toLowerCase().startsWith("es") ? "es" : "en");
+let filter = "all", q = "", pick = "", hide = store.get("empyrean-spoil") === "1";
+document.getElementById("spoil").checked = hide;
+
+const T = () => UI[lang];
+const esc = s => String(s).replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const isPending = c => c.s.some(x => x.p);
+const isTwo = c => c.s.filter(x => !x.p).length >= 2;
+const bookTag = b => {
+  if (!b) return "";
+  const parts = b.split(" · ").map(k => T().books[k]);
+  return `<span class="bk" title="${parts.map(p=>p[1]).join(" · ")}">${parts.map(p=>p[0]).join(" · ")}</span>`;
+};
+
+/* ---------- Rendering ---------- */
+function buildPicker(){
+  const sel = document.getElementById("pick");
+  sel.innerHTML = `<option value="">${esc(T().pickAll)}</option>`;
+  [[T().secMarked, D.filter(c=>c.m)], [T().secMain, D.filter(c=>!c.m)]].forEach(([label, list]) => {
+    const g = document.createElement("optgroup"); g.label = label;
+    [...list].sort((a,b)=>a.n.localeCompare(b.n)).forEach(c => {
+      const o = document.createElement("option"); o.value = c.n; o.textContent = c.n; g.appendChild(o);
+    });
+    sel.appendChild(g);
+  });
+  sel.value = pick;
+  sel.setAttribute("aria-label", T().pickLabel);
+}
+
+function card(c){
+  const L = lang;
+  const tag = c.m ? `<span class="tag">${esc(T().tagMarked)}</span>` : "";
+  const stSp = c.st.sp && hide ? " spoiler" : "";
+  const stBook = c.st.b ? " · " + bookTag(c.st.b).replace(/<[^>]+>/g,"") : "";
+  const meta = `<div class="meta"><span class="dr">🐉 ${esc(c.dr[L])}</span><span class="st st-${c.st.k}${stSp}">${esc(c.st[L])}${stBook}</span></div>`;
+  const seals = c.s.map((x,i) => {
+    if (x.p) return `<div class="seal pending"><div class="num">${i+1}</div><div class="val">${esc(T().pending)}<em>${esc(T().pendingSub)}</em></div></div>`;
+    const sp = x.sp && hide ? " spoiler" : "";
+    return `<div class="seal${x.h ? " hinted" : ""}"><div class="num">${i+1}</div><div class="val${sp}">${esc(x[L])} ${bookTag(x.b)}${x.d ? `<em>${esc(x.d[L])}</em>` : ""}</div></div>`;
+  }).join("");
+  return `<article class="card${c.m ? " marked" : ""}"><div class="top"><h3 class="name">${esc(c.n)}</h3>${tag}</div>${meta}${seals}${c.note ? `<div class="note">${esc(c.note[L])}</div>` : ""}</article>`;
+}
+
+function render(){
+  const L = lang;
+  const list = D.filter(c => {
+    if (pick && c.n !== pick) return false;
+    if (filter === "marked" && !c.m) return false;
+    if (filter === "pending" && !isPending(c)) return false;
+    if (filter === "two" && !isTwo(c)) return false;
+    if (q) {
+      // search both languages so "hielo" and "ice" both work
+      const hay = norm([c.n, c.dr.es, c.dr.en, ...c.s.flatMap(x => [x.es||"", x.en||"", x.d?x.d.es:"", x.d?x.d.en:""])].join(" "));
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  const single = list.length === 1 ? " single" : "";
+  const mk = list.filter(c => c.m), pr = list.filter(c => !c.m);
+  let html = "";
+  if (mk.length) html += `<h2 class="section">${esc(T().secMarked)}</h2><div class="grid${single}">${mk.map(card).join("")}</div>`;
+  if (pr.length) html += `<h2 class="section">${esc(T().secMain)}</h2><div class="grid${single}">${pr.map(card).join("")}</div>`;
+  if (!list.length) html = `<p class="empty">${esc(T().empty)}</p>`;
+  document.getElementById("out").innerHTML = html;
+  document.getElementById("clear").style.display = (pick || q || filter !== "all") ? "inline" : "none";
+
+  document.getElementById("stats").innerHTML =
+    `<div class="stat"><b>${D.filter(c=>c.m).length}</b><small>${esc(T().stMarked)}</small></div>` +
+    `<div class="stat"><b>${D.filter(isTwo).length}</b><small>${esc(T().stTwo)}</small></div>` +
+    `<div class="stat"><b style="color:var(--amber)">${D.filter(isPending).length}</b><small>${esc(T().stPending)}</small></div>`;
+}
+
+function applyLang(){
+  const t = T();
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  document.querySelector('meta[name="description"]').setAttribute("content", t.desc);
+  document.querySelector('meta[property="og:title"]').setAttribute("content", t.title);
+  document.querySelector('meta[property="og:description"]').setAttribute("content", t.desc);
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.innerHTML = t[el.dataset.i18n]; });
+  document.getElementById("q").placeholder = t.search;
+  document.getElementById("q").setAttribute("aria-label", t.search);
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false"));
+  const B = t.books;
+  document.getElementById("booksLegend").innerHTML =
+    Object.values(B).map(([a,full]) => `<span><b>${a}</b> ${full}</span>`).join("") + `<span>${esc(t.noTag)}</span>`;
+  buildPicker();
+  render();
+}
+
+/* ---------- Events ---------- */
+function setFilter(f){
+  filter = f;
+  document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x.dataset.f === f ? "true" : "false"));
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
+  lang = b.dataset.lang; store.set("empyrean-lang", lang); applyLang();
+}));
+document.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => { setFilter(b.dataset.f); render(); }));
+document.getElementById("pick").addEventListener("change", e => { pick = e.target.value; render(); });
+document.getElementById("q").addEventListener("input", e => { q = norm(e.target.value.trim()); render(); });
+document.getElementById("clear").addEventListener("click", () => {
+  pick = ""; q = ""; document.getElementById("pick").value = ""; document.getElementById("q").value = ""; setFilter("all"); render();
+});
+document.getElementById("spoil").addEventListener("change", e => {
+  hide = e.target.checked; store.set("empyrean-spoil", hide ? "1" : "0"); render();
+});
+document.getElementById("out").addEventListener("click", e => {
+  const s = e.target.closest(".spoiler"); if (s) s.classList.toggle("shown");
+});
+
+applyLang();
+</script>
+</body>
+</html>
